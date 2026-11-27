@@ -1,4 +1,4 @@
-import type { Profile, Seo } from "./types";
+import type { Highlight, Profile, Seo } from "./types";
 
 export const profile: Profile = {
   name: "Abdessamad Belahcen",
@@ -17,6 +17,23 @@ export const profile: Profile = {
   // /public and uncomment:
   // cvEn: "/cv-en.pdf",
   // cvFr: "/cv-fr.pdf",
+};
+
+/**
+ * Proof strip under the hero: real, verifiable numbers only.
+ * Keep it to 4 items (2×2 on phones, one row on desktop).
+ */
+export const highlights: Highlight[] = [
+  { value: "100k", label: "orders in the Olist lakehouse" },
+  { value: "4", label: "languages handled by the AI agent" },
+  { value: "5", label: "Docker services in production" },
+  { value: "98", label: "PageSpeed score on evomarket.ma" },
+];
+
+/** Contact section copy. */
+export const contactCopy = {
+  title: "Let's work together",
+  text: "Open to full-time roles and freelance projects, remote or on-site. Tell me what you're building and I'll get back to you quickly.",
 };
 
 export const seo: Seo = {

@@ -4,7 +4,7 @@ import { Section } from "@/components/section";
 
 export function Skills() {
   return (
-    <Section id="skills" title="Skills" className="bg-muted">
+    <Section id="skills" eyebrow="Toolbox" title="Skills" className="bg-muted">
       <dl className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {skillGroups.map((group) => (
           <div key={group.name} className="rounded-xl border bg-card p-5">

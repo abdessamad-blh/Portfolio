@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Hero } from "@/components/sections/hero";
+import { ProofStrip } from "@/components/sections/proof-strip";
 import { Projects } from "@/components/sections/projects";
 import { Skills } from "@/components/sections/skills";
 import { Experience } from "@/components/sections/experience";
@@ -12,6 +13,7 @@ export default function HomePage() {
       <SiteHeader />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
+        <ProofStrip />
         <Projects />
         <Skills />
         <Experience />

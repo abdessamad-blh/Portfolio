@@ -22,6 +22,12 @@ export type Profile = {
   cvFr?: string;
 };
 
+/** A single number + label shown in the proof strip under the hero. */
+export type Highlight = {
+  value: string;
+  label: string;
+};
+
 export type Seo = {
   /** Browser tab / search result title. */
   title: string;
