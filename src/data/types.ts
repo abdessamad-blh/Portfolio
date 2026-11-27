@@ -7,6 +7,10 @@ export type Profile = {
   location: string;
   /** 1–2 sentence intro under the title. */
   intro: string;
+  /** Status badge next to the photo, e.g. "Open to work". Empty string hides it. */
+  availability: string;
+  /** A few key technologies shown under the hero buttons. */
+  coreStack: string[];
   /** Path in /public. Recommended: square, ~600×600, < 100 KB. */
   photo: string;
   photoAlt: string;

@@ -11,6 +11,8 @@ export const profile: Profile = {
   email: "belahcenabdessamad@gmail.com",
   linkedin: "https://www.linkedin.com/in/abdessamad-belahcen-93138917a",
   github: "https://github.com/abdessamad-blh",
+  availability: "Open to work",
+  coreStack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Databricks", "n8n"],
   // CV buttons are hidden until these are set. To show them, add the PDFs to
   // /public and uncomment:
   // cvEn: "/cv-en.pdf",
