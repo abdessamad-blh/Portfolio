@@ -37,7 +37,7 @@ export const projects: Project[] = [
       "Live since Nov 2026 · answers in French, English, Arabic and Darija · tool calls (searchProducts, checkStock) so it never invents products · automatic provider failover.",
     image: {
       src: "/projects/ai-shopping-assistant.webp",
-      alt: "Electro Sky chat assistant answering a French question about soundbars with a product card showing price and stock",
+      alt: "Electro Sky storefront with the AI assistant open, recommending an in-stock Samsung monitor and sharing its product link",
       width: 1200,
       height: 750,
     },
