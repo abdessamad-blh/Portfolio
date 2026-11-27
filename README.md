@@ -66,4 +66,4 @@ Environment variables are read at build time, so redeploy after changing them.
 - **Performance:** fully static, WebP covers with `srcset` (custom `next/image` loader for static export), self-hosted Inter font, and no animation libraries.
 - **Accessibility:** semantic landmarks and headings, skip link, visible focus rings, alt text, external links announced to screen readers, and AA contrast.
 
-Lighthouse on the production build, served with compression: mobile 95–99 performance and 100 for accessibility, best practices and SEO; desktop 100 in every category.
+Lighthouse on the production build, served with compression: desktop 100 in every category; mobile 93–99 performance (simulated, varies per run; the observed LCP equals first paint) and 100 for accessibility, best practices and SEO.

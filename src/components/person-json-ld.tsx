@@ -1,4 +1,4 @@
-import { profile, seo } from "@/data/profile";
+import { currentEmployer, profile, seo } from "@/data/profile";
 import { skillGroups } from "@/data/skills";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -15,6 +15,7 @@ export function PersonJsonLd() {
     image: `${url}${profile.photo}`,
     jobTitle: "Full-stack engineer",
     description: seo.description,
+    worksFor: { "@type": "Organization", name: currentEmployer.name, url: currentEmployer.url },
     address: { "@type": "PostalAddress", addressLocality: "Rabat", addressCountry: "MA" },
     ...(isSet(profile.email) ? { email: `mailto:${profile.email}` } : {}),
     sameAs: [profile.linkedin, profile.github].filter(isSet),

@@ -45,13 +45,18 @@ export type Project = {
     live?: string;
     /** Only set when the repository is public. */
     github?: string;
+    /** Link text for the GitHub link. Defaults to "Code". */
+    githubLabel?: string;
   };
 };
 
 export type AlsoBuiltItem = {
   title: string;
   description: string;
+  /** Live site or main link. */
   href?: string;
+  /** Public repository, if any. */
+  github?: string;
   badge?: string;
 };
 
@@ -66,6 +71,6 @@ export type ExperienceItem = {
   /** Free text, e.g. "2024 — present". */
   period: string;
   location?: string;
-  /** 1–3 short bullet points. */
+  /** 0–3 short bullet points. */
   highlights: string[];
 };

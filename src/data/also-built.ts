@@ -3,13 +3,22 @@ import type { AlsoBuiltItem } from "./types";
 export const alsoBuilt: AlsoBuiltItem[] = [
   {
     title: "AMPF brand kit",
-    description: "TODO: one-line description.",
-    // TODO: link to the brand kit.
-    href: "https://TODO",
+    description:
+      "Brand-guidelines website for AMPF (Moroccan Family Planning Association): colours, typography, components and usage rules.",
+    href: "https://ampf-brandkit.netlify.app",
+    github: "https://github.com/abdessamad-blh/ampf-brandkit-",
+  },
+  {
+    title: "Universal SUP",
+    description:
+      "Lead-generation landing page for a Cambridge English exam centre in Morocco, with a WhatsApp lead form and Meta Pixel tracking (Next.js 14, Tailwind).",
+    href: "https://universal-sup.netlify.app",
+    github: "https://github.com/abdessamad-blh/Universal-SUP",
   },
   {
     title: "BASIRA",
-    description: "TODO: one-line description.",
+    description:
+      "Private, local-first mobile app (React Native / Expo) that helps couples prepare for marriage through guided questions. Google Play release coming.",
     badge: "In progress",
   },
 ];

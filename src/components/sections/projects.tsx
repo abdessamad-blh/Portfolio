@@ -62,7 +62,7 @@ function ProjectCard({ project }: { project: Project }) {
               aria-label={`${project.title} source code on GitHub`}
             >
               <GitHubIcon className="size-4" />
-              Code
+              {project.links.githubLabel ?? "Code"}
             </ExternalLink>
           ) : null}
         </CardFooter>

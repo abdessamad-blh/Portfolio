@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { alsoBuilt } from "@/data/also-built";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "@/components/external-link";
+import { GitHubIcon } from "@/components/icons";
 
 export function AlsoBuilt() {
   return (
@@ -27,7 +28,17 @@ export function AlsoBuilt() {
                 )}
                 {item.badge ? <Badge variant="accent">{item.badge}</Badge> : null}
               </div>
-              <p className="text-sm text-muted-foreground">{item.description}</p>
+              <p className="flex-1 text-sm text-muted-foreground">{item.description}</p>
+              {item.github ? (
+                <ExternalLink
+                  href={item.github}
+                  className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium hover:text-primary"
+                  aria-label={`${item.title} source code on GitHub`}
+                >
+                  <GitHubIcon className="size-4" />
+                  Code
+                </ExternalLink>
+              ) : null}
             </li>
           ))}
         </ul>

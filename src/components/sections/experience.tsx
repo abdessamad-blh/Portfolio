@@ -20,11 +20,13 @@ export function Experience() {
                 {item.location ? ` · ${item.location}` : ""}
               </p>
             </div>
-            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground marker:text-primary/60">
-              {item.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
-              ))}
-            </ul>
+            {item.highlights.length > 0 ? (
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground marker:text-primary/60">
+                {item.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+            ) : null}
           </li>
         ))}
       </ol>

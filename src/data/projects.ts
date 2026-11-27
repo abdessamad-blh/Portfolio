@@ -2,86 +2,92 @@ import type { Project } from "./types";
 
 /**
  * Featured projects, shown in this order.
- * Images live in /public/projects (WebP, 1200×750). To add a new screenshot,
- * drop it in ./images-src and run `npm run images`.
+ * Images live in /public/projects (WebP, 1200×750 + a 640px copy). To add a new
+ * screenshot, drop it in ./images-src and run `npm run images`.
  */
 export const projects: Project[] = [
   {
     slug: "electrosky",
     title: "electrosky.ma",
     summary:
-      "Full-stack e-commerce platform for an electronics store in Rabat, with click-and-collect, real-time order management and a multi-role admin.",
-    role: "TODO: your role in 1–2 lines (e.g. what you designed, built and deployed).",
-    stack: ["Next.js", "TypeScript", "Fastify", "PostgreSQL", "Prisma", "Redis", "Socket.io", "Docker"],
-    result: "TODO: real result or metric (orders, performance, uptime…).",
+      "Click-and-collect e-commerce platform for an electronics store in Rabat, with a full back office.",
+    role: "Sole developer: architecture, frontend, API, database, security and deployment.",
+    stack: ["Next.js 15", "TypeScript", "Fastify", "PostgreSQL 16", "Prisma", "Redis 7", "Socket.io", "Docker", "Caddy"],
+    result:
+      "5 Docker services in production · 15+ table schema · real-time order alerts · stock and supplier tracking · RBAC, 2FA, rate limiting and activity log.",
     image: {
       src: "/projects/electrosky.webp",
       alt: "Electro Sky storefront homepage showing a TV promotion banner and product categories",
       width: 1200,
       height: 750,
     },
-    links: { live: "https://electrosky.ma" },
+    links: {
+      live: "https://electrosky.ma",
+      github: "https://github.com/abdessamad-blh/electrosky-infra",
+      githubLabel: "Infra repo",
+    },
   },
   {
     slug: "ai-shopping-assistant",
     title: "AI shopping assistant",
-    summary: "TODO: one-line summary of the assistant and who it helps.",
-    role: "TODO: your role in 1–2 lines.",
-    stack: ["TODO"],
-    result: "TODO: real result or metric.",
+    summary: "AI agent on electrosky.ma that answers customers from the real product catalog.",
+    role: "Designed, built and deployed it alone.",
+    stack: ["TypeScript", "Mastra", "Groq", "Google Gemini", "SQLite", "Docker", "Caddy"],
+    result:
+      "Live since Nov 2026 · answers in French, English, Arabic and Darija · tool calls (searchProducts, checkStock) so it never invents products · automatic provider failover.",
     image: {
       src: "/projects/ai-shopping-assistant.webp",
+      // TODO: replace the placeholder cover with a screenshot of the chat widget.
       alt: "Placeholder cover for the AI shopping assistant project",
       width: 1200,
       height: 750,
     },
     links: {
-      // live: "TODO",
-      // github: "TODO (only if public)",
+      live: "https://electrosky.ma",
+      github: "https://github.com/abdessamad-blh/electrosky-infra",
+      githubLabel: "Infra repo",
     },
   },
   {
     slug: "olist-lakehouse",
     title: "Olist Lakehouse (Databricks)",
-    summary: "TODO: one-line summary of the lakehouse (data sources, layers, what it answers).",
-    role: "TODO: your role in 1–2 lines.",
-    stack: ["Databricks", "TODO"],
-    result: "TODO: real result or metric.",
+    summary: "End-to-end medallion lakehouse on ~100,000 real e-commerce orders from the Olist dataset.",
+    role: "Built the full pipeline alone as a data engineering project.",
+    stack: ["Databricks", "PySpark", "Spark SQL", "Delta Lake", "Unity Catalog", "Lakeflow Jobs", "AI/BI Dashboards"],
+    result:
+      "9 bronze → 7 silver → 3 gold Delta tables with data-quality checks · found late deliveries average a 2.57 review score vs 4.29 on time.",
     image: {
       src: "/projects/olist-lakehouse.webp",
-      alt: "Placeholder cover for the Olist Lakehouse project on Databricks",
+      alt: "Databricks job run of the Olist lakehouse pipeline showing successful bronze, silver and gold tasks",
       width: 1200,
       height: 750,
     },
-    links: {
-      // github: "TODO (only if public)",
-    },
+    links: { github: "https://github.com/abdessamad-blh/olist-lakehouse-databricks" },
   },
   {
     slug: "n8n-automation",
     title: "n8n automation pipeline",
-    summary: "TODO: one-line summary of what the pipeline automates.",
-    role: "TODO: your role in 1–2 lines.",
-    stack: ["n8n", "TODO"],
-    result: "TODO: real result or metric (e.g. hours saved per week, if measured).",
+    summary: "Self-hosted content automation pipeline that turns a topic into a finished video ready for review.",
+    role: "Designed, built and operate it alone, including the server.",
+    stack: ["n8n", "Docker", "Caddy", "Claude", "Gemini", "Groq Whisper", "Text-to-speech", "Google Drive", "Telegram"],
+    // TODO: add hours saved per video if you have a real number.
+    result:
+      "17 nodes · retries and rate-limit handling · validates malformed AI output before the next step · one human review step at the end.",
     image: {
       src: "/projects/n8n-automation.webp",
-      alt: "Placeholder cover for the n8n automation pipeline project",
+      alt: "n8n workflow canvas: Telegram webhook, file download, Groq Whisper transcription and subtitle file steps",
       width: 1200,
       height: 750,
     },
-    links: {
-      // github: "TODO (only if public)",
-    },
+    links: {},
   },
   {
     slug: "saidiabay",
     title: "saidiabay.ma",
-    summary:
-      "Full-stack real-estate platform for rentals and sales, with calendar bookings, seasonal pricing, a sales lead pipeline and a secure admin CMS.",
-    role: "TODO: your role in 1–2 lines.",
-    stack: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Prisma", "Leaflet", "Docker"],
-    result: "TODO: real result or metric.",
+    summary: "Real-estate platform for the Saidia beach resort: seasonal rentals and property sales leads.",
+    role: "Built about 90% of it alone.",
+    stack: ["Next.js 14", "TypeScript", "GraphQL", "PostgreSQL", "Prisma"],
+    result: "Rental calendar with seasonal pricing and a lead CRM for property sales.",
     image: {
       src: "/projects/saidiabay.webp",
       alt: "Saidia Bay real-estate website shown on a laptop and a phone",
@@ -93,11 +99,11 @@ export const projects: Project[] = [
   {
     slug: "evomarket",
     title: "evomarket.ma",
-    summary:
-      "Trilingual (French, English, Arabic with RTL) digital-agency website with an MDX blog and a multi-step quote request form.",
-    role: "TODO: your role in 1–2 lines.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "next-intl", "MDX", "Resend"],
-    result: "TODO: real result or metric.",
+    summary: "Website of EvoMarket, the digital agency where I work, in French, English and Arabic.",
+    role: "Built and optimised it: performance, technical SEO and analytics.",
+    stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "next-intl", "Search Console", "Google Analytics"],
+    // TODO: add the mobile PageSpeed score.
+    result: "PageSpeed (desktop): 98 performance, 92 SEO, 96 accessibility · LCP 0.9 s, CLS 0.",
     image: {
       src: "/projects/evomarket.webp",
       alt: "EvoMarket logo on a dark blue background",
@@ -106,7 +112,7 @@ export const projects: Project[] = [
     },
     links: {
       live: "https://evomarket.ma",
-      // github: "TODO (only if the repository is public)",
+      github: "https://github.com/abdessamad-blh/EvoMarket-app",
     },
   },
 ];

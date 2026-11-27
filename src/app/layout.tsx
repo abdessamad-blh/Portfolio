@@ -7,7 +7,8 @@ import { Analytics } from "@/components/analytics";
 import { PersonJsonLd } from "@/components/person-json-ld";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+// display "optional": no late font swap, so text never repaints after first paint (better LCP/CLS).
+const inter = Inter({ subsets: ["latin"], display: "optional", variable: "--font-inter" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
