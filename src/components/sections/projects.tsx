@@ -49,9 +49,8 @@ function ProjectCard({ project }: { project: Project }) {
             <ExternalLink
               href={live}
               className="inline-flex items-center gap-1 text-primary hover:underline"
-              aria-label={`Visit ${project.title} live site`}
             >
-              Live site
+              Live site<span className="sr-only">: {project.title}</span>
               <ArrowUpRight className="size-4" aria-hidden="true" />
             </ExternalLink>
           ) : null}
@@ -59,10 +58,10 @@ function ProjectCard({ project }: { project: Project }) {
             <ExternalLink
               href={github}
               className="inline-flex items-center gap-1.5 text-foreground hover:text-primary"
-              aria-label={`${project.title} source code on GitHub`}
             >
               <GitHubIcon className="size-4" />
               {project.links.githubLabel ?? "Code"}
+              <span className="sr-only">: {project.title} on GitHub</span>
             </ExternalLink>
           ) : null}
         </CardFooter>

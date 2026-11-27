@@ -33,10 +33,9 @@ export function AlsoBuilt() {
                 <ExternalLink
                   href={item.github}
                   className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium hover:text-primary"
-                  aria-label={`${item.title} source code on GitHub`}
                 >
                   <GitHubIcon className="size-4" />
-                  Code
+                  Code<span className="sr-only">: {item.title} on GitHub</span>
                 </ExternalLink>
               ) : null}
             </li>

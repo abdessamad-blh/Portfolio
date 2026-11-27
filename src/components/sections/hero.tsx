@@ -4,9 +4,11 @@ import { Download, FileText, Mail, MapPin } from "lucide-react";
 import { profile } from "@/data/profile";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "@/components/external-link";
+import { asset } from "@/lib/base-path";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons";
 
 export function Hero() {
+  const hasCv = Boolean(profile.cvEn || profile.cvFr);
   return (
     <section aria-labelledby="hero-heading" className="border-b bg-gradient-to-b from-accent/60 to-background">
       <div className="mx-auto grid max-w-5xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-24 md:grid-cols-[1fr_auto]">
@@ -21,24 +23,41 @@ export function Hero() {
           </p>
           <p className="mt-5 max-w-xl text-pretty text-muted-foreground">{profile.intro}</p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <a href={profile.cvEn} download>
-                <Download aria-hidden="true" />
-                Download CV (EN)
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <a href={profile.cvFr} download hrefLang="fr">
-                <FileText aria-hidden="true" />
-                CV (FR)
-              </a>
-            </Button>
-          </div>
+          {hasCv ? (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {profile.cvEn ? (
+                <Button asChild size="lg">
+                  <a href={asset(profile.cvEn)} download>
+                    <Download aria-hidden="true" />
+                    Download CV (EN)
+                  </a>
+                </Button>
+              ) : null}
+              {profile.cvFr ? (
+                <Button asChild size="lg" variant="outline">
+                  <a href={asset(profile.cvFr)} download hrefLang="fr">
+                    <FileText aria-hidden="true" />
+                    CV (FR)
+                  </a>
+                </Button>
+              ) : null}
+            </div>
+          ) : null}
 
-          <ul className="mt-4 flex flex-wrap gap-2" aria-label="Profiles and email">
+          <ul
+            className={hasCv ? "mt-4 flex flex-wrap gap-2" : "mt-8 flex flex-wrap gap-3"}
+            aria-label="Profiles and email"
+          >
             <li>
-              <Button asChild variant="ghost" size="sm">
+              <Button asChild variant={hasCv ? "ghost" : "default"} size={hasCv ? "sm" : "lg"}>
+                <a href={`mailto:${profile.email}`}>
+                  <Mail aria-hidden="true" />
+                  {hasCv ? "Email" : "Email me"}
+                </a>
+              </Button>
+            </li>
+            <li>
+              <Button asChild variant={hasCv ? "ghost" : "outline"} size={hasCv ? "sm" : "lg"}>
                 <ExternalLink href={profile.linkedin}>
                   <LinkedInIcon />
                   LinkedIn
@@ -46,19 +65,11 @@ export function Hero() {
               </Button>
             </li>
             <li>
-              <Button asChild variant="ghost" size="sm">
+              <Button asChild variant={hasCv ? "ghost" : "outline"} size={hasCv ? "sm" : "lg"}>
                 <ExternalLink href={profile.github}>
                   <GitHubIcon />
                   GitHub
                 </ExternalLink>
-              </Button>
-            </li>
-            <li>
-              <Button asChild variant="ghost" size="sm">
-                <a href={`mailto:${profile.email}`}>
-                  <Mail aria-hidden="true" />
-                  Email
-                </a>
               </Button>
             </li>
           </ul>

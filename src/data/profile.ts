@@ -6,15 +6,15 @@ export const profile: Profile = {
   location: "Rabat, Morocco · open to remote & on-site",
   intro:
     "Full-stack engineer based in Rabat, building production web apps, AI agents and data pipelines end to end. I design, build, deploy and maintain what I ship, from the database to the server.",
-  // TODO: replace /public/photo.jpg with your real photo (square, ~600×600).
   photo: "/photo.jpg",
   photoAlt: "Portrait of Abdessamad Belahcen",
   email: "belahcenabdessamad@gmail.com",
   linkedin: "https://www.linkedin.com/in/abdessamad-belahcen-93138917a",
   github: "https://github.com/abdessamad-blh",
-  // TODO: add /public/cv-en.pdf and /public/cv-fr.pdf.
-  cvEn: "/cv-en.pdf",
-  cvFr: "/cv-fr.pdf",
+  // CV buttons are hidden until these are set. To show them, add the PDFs to
+  // /public and uncomment:
+  // cvEn: "/cv-en.pdf",
+  // cvFr: "/cv-fr.pdf",
 };
 
 export const seo: Seo = {

@@ -37,8 +37,7 @@ export const projects: Project[] = [
       "Live since Nov 2026 · answers in French, English, Arabic and Darija · tool calls (searchProducts, checkStock) so it never invents products · automatic provider failover.",
     image: {
       src: "/projects/ai-shopping-assistant.webp",
-      // TODO: replace the placeholder cover with a screenshot of the chat widget.
-      alt: "Placeholder cover for the AI shopping assistant project",
+      alt: "Electro Sky chat assistant answering a French question about soundbars with a product card showing price and stock",
       width: 1200,
       height: 750,
     },
@@ -67,12 +66,13 @@ export const projects: Project[] = [
   {
     slug: "n8n-automation",
     title: "n8n automation pipeline",
-    summary: "Self-hosted content automation pipeline that turns a topic into a finished video ready for review.",
+    summary:
+      "Self-hosted Telegram bot that turns an audio file into ready-to-use subtitle files, with no manual steps.",
     role: "Designed, built and operate it alone, including the server.",
-    stack: ["n8n", "Docker", "Caddy", "Claude", "Gemini", "Groq Whisper", "Text-to-speech", "Google Drive", "Telegram"],
-    // TODO: add hours saved per video if you have a real number.
+    stack: ["n8n", "Telegram Bot API", "Groq Whisper", "JavaScript", "Docker", "Caddy"],
+    // TODO: add time saved per file if you have a real number.
     result:
-      "17 nodes · retries and rate-limit handling · validates malformed AI output before the next step · one human review step at the end.",
+      "29-node workflow: Telegram upload → Whisper transcription → SRT, transliterated and English subtitle files plus metadata, sent back in the chat · temp files cleaned up after each run.",
     image: {
       src: "/projects/n8n-automation.webp",
       alt: "n8n workflow canvas: Telegram webhook, file download, Groq Whisper transcription and subtitle file steps",

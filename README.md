@@ -32,10 +32,10 @@ Search for `TODO` to find everything that still needs real content:
 grep -rn TODO src/data
 ```
 
-### Files to add in `public/`
+### Files in `public/`
 
-- `public/photo.jpg`: your photo (square, about 600×600, under 100 KB). The current file is a placeholder.
-- `public/cv-en.pdf` and `public/cv-fr.pdf`: the CV download buttons link here.
+- `public/photo.jpg`: your photo (square, 600×600).
+- CVs (optional): add `public/cv-en.pdf` / `public/cv-fr.pdf` and uncomment `cvEn` / `cvFr` in `src/data/profile.ts`. The CV buttons stay hidden until then.
 
 ### Project images
 
@@ -45,24 +45,35 @@ Covers are WebP at 1200×750 (16:10), with a 640px copy for phones. To add or re
 2. Run `npm run images`. This writes `public/projects/n8n-automation.webp` and `-640.webp`.
 3. Point the project's `image.src` in `src/data/projects.ts` to `/projects/n8n-automation.webp`.
 
-## Deploy on Vercel
+## Deploy on GitHub Pages (free)
 
-1. Import the GitHub repo in Vercel.
-2. Leave **Root Directory** as the repository root.
-3. Framework preset: Next.js (auto-detected). Vercel serves the static `out/` export.
-4. Environment variables (all optional):
+The workflow in `.github/workflows/deploy.yml` builds the site and publishes it on every push to `main`.
 
-| Variable | Purpose |
-| --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical URL, e.g. `https://abdessamad.dev`. Used in metadata, sitemap, robots and JSON-LD. Defaults to the Vercel production URL. |
-| `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | Enables Umami analytics. No script is loaded when empty. |
-| `NEXT_PUBLIC_UMAMI_SCRIPT_URL` | Umami script URL (default: Umami Cloud). For self-hosted Umami, e.g. `https://analytics.evomarket.ma/script.js`. |
+One-time setup:
 
-Environment variables are read at build time, so redeploy after changing them.
+1. On GitHub, open **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Push to `main` (or run the workflow from the **Actions** tab). The site goes live at `https://abdessamad-blh.github.io/Portfolio/`.
+
+The workflow sets the base path (`/Portfolio`) and the site URL automatically from the Pages settings, so the same code also works on a custom domain or at a root URL.
+
+Tips:
+
+- **Shorter URL:** rename the repository to `abdessamad-blh.github.io`. The site then lives at `https://abdessamad-blh.github.io/` with no `/Portfolio`, and `robots.txt` is served at the domain root, where search engines look for it.
+- **Custom domain:** add it under **Settings → Pages → Custom domain**. The next deploy picks it up automatically.
+- **Analytics (optional):** under **Settings → Secrets and variables → Actions → Variables**, add `NEXT_PUBLIC_UMAMI_WEBSITE_ID` (and `NEXT_PUBLIC_UMAMI_SCRIPT_URL` for self-hosted Umami), then redeploy.
+
+To build locally the way Pages does:
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/Portfolio NEXT_PUBLIC_SITE_URL=https://abdessamad-blh.github.io/Portfolio npm run build
+```
+
+Vercel and Netlify also work with no extra config: leave `NEXT_PUBLIC_BASE_PATH` unset and set `NEXT_PUBLIC_SITE_URL` to your domain.
 
 ## What's included
 
-- **SEO:** metadata, canonical URL, Open Graph and Twitter cards, a generated OG image (`/opengraph-image`), `sitemap.xml`, `robots.txt`, and JSON-LD `Person` schema. TODO values are left out of the schema automatically.
+- **SEO:** metadata, canonical URL, Open Graph and Twitter cards, a generated OG image (`/og.png`), `sitemap.xml`, `robots.txt`, and JSON-LD `Person` schema. TODO values are left out of the schema automatically.
 - **Performance:** fully static, WebP covers with `srcset` (custom `next/image` loader for static export), self-hosted Inter font, and no animation libraries.
 - **Accessibility:** semantic landmarks and headings, skip link, visible focus rings, alt text, external links announced to screen readers, and AA contrast.
 

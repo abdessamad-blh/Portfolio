@@ -10,6 +10,9 @@ import "./globals.css";
 // display "optional": no late font swap, so text never repaints after first paint (better LCP/CLS).
 const inter = Inter({ subsets: ["latin"], display: "optional", variable: "--font-inter" });
 
+// Absolute URL: getSiteUrl() already includes any base path (e.g. /Portfolio).
+const ogImage = `${getSiteUrl()}/og.png`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: seo.title,
@@ -17,18 +20,19 @@ export const metadata: Metadata = {
   keywords: seo.keywords,
   authors: [{ name: profile.name, url: profile.github }],
   creator: profile.name,
-  alternates: { canonical: "/" },
+  alternates: { canonical: `${getSiteUrl()}/` },
   openGraph: {
     type: "profile",
-    url: "/",
+    url: `${getSiteUrl()}/`,
     siteName: profile.name,
     title: seo.title,
     description: seo.description,
     locale: "en_US",
     firstName: "Abdessamad",
     lastName: "Belahcen",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: `${profile.name} — ${profile.title}` }],
   },
-  twitter: { card: "summary_large_image", title: seo.title, description: seo.description },
+  twitter: { card: "summary_large_image", title: seo.title, description: seo.description, images: [ogImage] },
   robots: { index: true, follow: true },
 };
 

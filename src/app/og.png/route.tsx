@@ -2,13 +2,14 @@ import { ImageResponse } from "next/og";
 
 import { profile } from "@/data/profile";
 
+// Open Graph image, generated once at build time into out/og.png.
+// A route (not opengraph-image.tsx) so the exported file keeps its .png
+// extension: static hosts like GitHub Pages pick the content type from it.
 export const dynamic = "force-static";
-export const alt = `${profile.name} — ${profile.title}`;
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
 
-// Generated once at build time into /opengraph-image.png.
-export default function OpenGraphImage() {
+const size = { width: 1200, height: 630 };
+
+export function GET() {
   return new ImageResponse(
     (
       <div

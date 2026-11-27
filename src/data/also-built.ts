@@ -16,6 +16,19 @@ export const alsoBuilt: AlsoBuiltItem[] = [
     github: "https://github.com/abdessamad-blh/Universal-SUP",
   },
   {
+    title: "EvoMarket Academy",
+    description:
+      "Mobile-first landing page for EvoMarket Academy's social media marketing training in Casablanca: programme, schedule and trainers (Next.js 14, Tailwind).",
+    href: "https://academy.evomarket.ma",
+    github: "https://github.com/abdessamad-blh/evomarket-academy",
+  },
+  {
+    title: "FIFAP",
+    description:
+      "Event website for FIFAP (fifap.info): programme, speakers and key information. I built about half of it during my internship at EvoMarket.",
+    href: "https://fifap.info",
+  },
+  {
     title: "BASIRA",
     description:
       "Private, local-first mobile app (React Native / Expo) that helps couples prepare for marriage through guided questions. Google Play release coming.",

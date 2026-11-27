@@ -13,8 +13,9 @@ export type Profile = {
   email: string;
   linkedin: string;
   github: string;
-  cvEn: string;
-  cvFr: string;
+  /** Optional: when unset, the CV buttons are hidden. Paths in /public. */
+  cvEn?: string;
+  cvFr?: string;
 };
 
 export type Seo = {
