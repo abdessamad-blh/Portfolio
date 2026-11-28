@@ -7,9 +7,9 @@ import { pageSections } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
 /**
- * Floating pill (bottom-right): names the next section and jumps to it.
+ * Floating pill (top-right): names the next section and jumps to it.
  * On the last section it becomes "Back to top". It hides while a call-to-action button
- * (marked with data-hide-section-nav) passes through the bottom strip of the screen where
+ * (marked with data-hide-section-nav) passes through the top strip of the screen where
  * the pill sits, so it never covers those buttons.
  */
 export function SectionNavigator() {
@@ -40,20 +40,20 @@ export function SectionNavigator() {
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
-    // Hide while any marked button is inside the bottom strip (the pill's area).
+    // Hide while any marked button is inside the top strip (the pill's area).
     const targets = Array.from(document.querySelectorAll("[data-hide-section-nav]"));
     const inStrip = new Set<Element>();
     let observer: IntersectionObserver | null = null;
     const observe = () => {
       observer?.disconnect();
       inStrip.clear();
-      const strip = 96; // px from the bottom of the viewport
+      const strip = 80; // px from the top of the viewport
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => (e.isIntersecting ? inStrip.add(e.target) : inStrip.delete(e.target)));
           setHidden(inStrip.size > 0);
         },
-        { rootMargin: `-${Math.max(window.innerHeight - strip, 0)}px 0px 0px 0px` }
+        { rootMargin: `0px 0px -${Math.max(window.innerHeight - strip, 0)}px 0px` }
       );
       targets.forEach((t) => observer?.observe(t));
     };
@@ -90,8 +90,8 @@ export function SectionNavigator() {
   return (
     <div
       className={cn(
-        "fixed right-4 bottom-4 z-40 transition-[opacity,transform] duration-200 sm:right-6 sm:bottom-6",
-        hidden && "pointer-events-none translate-y-2 opacity-0"
+        "fixed top-4 right-4 z-40 transition-[opacity,transform] duration-200 sm:top-6 sm:right-6",
+        hidden && "pointer-events-none -translate-y-2 opacity-0"
       )}
       aria-hidden={hidden || undefined}
     >
