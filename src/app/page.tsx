@@ -1,4 +1,5 @@
 import { SiteFooter } from "@/components/site-footer";
+import { SectionNavigator } from "@/components/section-navigator";
 import { Hero } from "@/components/sections/hero";
 import { ProofStrip } from "@/components/sections/proof-strip";
 import { Projects } from "@/components/sections/projects";
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Contact />
       </main>
       <SiteFooter />
+      <SectionNavigator />
     </div>
   );
 }

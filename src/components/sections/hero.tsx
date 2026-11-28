@@ -17,12 +17,16 @@ export function Hero() {
   const current = experience.find((item) => /present/i.test(item.period));
 
   return (
-    <section aria-labelledby="hero-heading" className="relative isolate overflow-hidden border-b">
-      {/* Decorative background: soft blue wash + faint dot grid that fades out. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-accent to-background" />
+    <section id="hero" aria-labelledby="hero-heading" className="relative isolate overflow-hidden border-b">
+      {/* Decorative background: soft blue wash + faint dot grid. Both fade in over the
+          top 20% (transparent at the very top) and the dots fade out again lower down. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(#2563eb33_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-accent to-background [mask-image:linear-gradient(to_bottom,transparent,black_20%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(#2563eb33_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,transparent,black_20%,transparent_85%)]"
       />
 
       <div className="mx-auto grid max-w-5xl gap-x-12 px-4 pt-12 pb-14 sm:px-6 sm:pt-16 sm:pb-20 md:grid-cols-[1fr_auto] md:items-center md:py-24">
@@ -106,6 +110,7 @@ export function Hero() {
           <ul
             className={`${hasCv ? "mt-3" : "mt-8"} grid grid-cols-2 gap-3 sm:flex sm:flex-wrap`}
             aria-label="Contact and profiles"
+            data-hide-section-nav=""
           >
             <li className="col-span-2">
               <Button asChild size="lg" variant={hasCv ? "outline" : "default"} className="w-full sm:w-auto">

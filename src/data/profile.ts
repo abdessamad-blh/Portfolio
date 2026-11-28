@@ -54,6 +54,18 @@ export const seo: Seo = {
   ],
 };
 
+/**
+ * Sections the floating "next section" button steps through, in page order.
+ * `id` must match the section's id attribute.
+ */
+export const pageSections = [
+  { id: "hero", label: "Intro" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+] as const;
+
 /** Current employer, used in the JSON-LD Person schema. */
 export const currentEmployer = { name: "EvoMarket Agency", url: "https://evomarket.ma" };
 

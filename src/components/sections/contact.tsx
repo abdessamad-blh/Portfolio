@@ -34,7 +34,7 @@ export function Contact() {
           <p className="mt-4 max-w-xl text-pretty text-slate-300">{contactCopy.text}</p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
-            <Button asChild size="lg" className="h-12 w-full px-6 text-base sm:w-auto">
+            <Button asChild size="lg" className="h-12 w-full px-6 text-base sm:w-auto" data-hide-section-nav="">
               <a href={`mailto:${profile.email}`}>
                 <Mail aria-hidden="true" />
                 Email me
