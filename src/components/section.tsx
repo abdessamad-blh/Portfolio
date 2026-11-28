@@ -34,3 +34,5 @@ export function Section({ id, title, eyebrow, description, className, children }
     </section>
   );
 }
+
+//first design try
