@@ -25,7 +25,7 @@ export function Hero() {
         className="absolute inset-0 -z-10 bg-[radial-gradient(#2563eb33_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
       />
 
-      <div className="mx-auto grid max-w-5xl gap-x-12 px-4 pt-10 pb-14 sm:px-6 sm:pt-16 sm:pb-20 md:grid-cols-[1fr_auto] md:items-center md:py-24">
+      <div className="mx-auto grid max-w-5xl gap-x-12 px-4 pt-12 pb-14 sm:px-6 sm:pt-16 sm:pb-20 md:grid-cols-[1fr_auto] md:items-center md:py-24">
         {/* Mobile: photo + status side by side. Desktop: photo moves to the right column. */}
         <div className="flex items-center gap-4 md:contents">
           <div className="relative shrink-0 md:col-start-2 md:row-span-2 md:row-start-1">

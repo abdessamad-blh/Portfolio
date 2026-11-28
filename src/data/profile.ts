@@ -57,10 +57,3 @@ export const seo: Seo = {
 /** Current employer, used in the JSON-LD Person schema. */
 export const currentEmployer = { name: "EvoMarket Agency", url: "https://evomarket.ma" };
 
-/** In-page navigation (section ids must match the components). */
-export const navigation = [
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
-] as const;

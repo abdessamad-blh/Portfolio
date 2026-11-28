@@ -1,4 +1,3 @@
-import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Hero } from "@/components/sections/hero";
 import { ProofStrip } from "@/components/sections/proof-strip";
@@ -10,7 +9,6 @@ import { Contact } from "@/components/sections/contact";
 export default function HomePage() {
   return (
     <div id="top">
-      <SiteHeader />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
         <ProofStrip />

@@ -34,7 +34,7 @@ export const experience: ExperienceItem[] = [
     period: "Jul — Sep 2025",
     location: "Rabat (hybrid)",
     highlights: [
-      "Built a web application as my Master's final-year project. TODO: add one line on what it did.",
+      "Built a web application as my Master's final-year project.",
     ],
   },
   {
@@ -42,7 +42,7 @@ export const experience: ExperienceItem[] = [
     organization: "Ministry of Habous and Islamic Affairs",
     period: "May — Jul 2023",
     location: "Rabat",
-    highlights: ["TODO: one line on what you built (PHP/MySQL)."],
+    highlights: [],
   },
   {
     role: "Developer (internship)",
