@@ -19,23 +19,28 @@ export function Hero() {
   return (
     <section id="hero" aria-labelledby="hero-heading" className="relative isolate overflow-hidden border-b">
       {/* Decorative background: soft blue wash + faint dot grid. Both fade in over the
-          top 10% (transparent at the very top) and the dots fade out again lower down. */}
+          top 5% (transparent at the very top) and the dots fade out again lower down. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-accent to-background [mask-image:linear-gradient(to_bottom,transparent,black_10%)]"
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-accent to-background [mask-image:linear-gradient(to_bottom,transparent,black_5%)]"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(#2563eb33_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,transparent_85%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(#2563eb33_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,transparent,black_5%,transparent_85%)]"
       />
 
-      <div className="mx-auto grid max-w-5xl gap-x-12 px-4 pt-12 pb-14 sm:px-6 sm:pt-16 sm:pb-20 md:grid-cols-[1fr_auto] md:items-center md:py-24">
+      <div className="mx-auto grid max-w-5xl gap-x-12 px-4 pt-12 pb-14 sm:px-6 sm:pt-16 sm:pb-20 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:py-20 lg:gap-x-20 lg:py-24">
         {/* Mobile: photo + status side by side. Desktop: photo moves to the right column. */}
         <div className="flex items-center gap-4 md:contents">
-          <div className="relative shrink-0 md:col-start-2 md:row-span-2 md:row-start-1">
+          <div className="relative shrink-0 md:col-start-2 md:row-span-2 md:row-start-1 md:mr-3 md:mb-6">
+            {/* Desktop decoration: soft glow + offset outline frame behind the portrait. */}
             <div
               aria-hidden="true"
-              className="absolute -inset-3 -z-10 hidden rounded-full bg-primary/15 blur-2xl md:block"
+              className="absolute -inset-6 -z-10 hidden rounded-[3rem] bg-primary/15 blur-3xl md:block"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 -z-10 hidden translate-x-3 translate-y-3 rounded-[2rem] border-2 border-primary/25 md:block"
             />
             <Image
               src={profile.photo}
@@ -43,9 +48,25 @@ export function Hero() {
               width={600}
               height={600}
               priority
-              sizes="(min-width: 768px) 288px, 80px"
-              className="size-20 rounded-full object-cover shadow-md ring-4 ring-background md:size-72"
+              sizes="(min-width: 1024px) 336px, (min-width: 768px) 256px, 80px"
+              className="size-20 rounded-full object-cover shadow-md ring-4 ring-background md:size-64 md:rounded-[2rem] md:shadow-xl md:ring-0 lg:size-84"
             />
+            {/* Desktop: floating "currently" card over the portrait's bottom-left corner. */}
+            {current ? (
+              <div className="absolute -bottom-6 -left-6 hidden max-w-[16rem] lg:-left-10 items-center gap-3 rounded-2xl border bg-white/95 p-3 pr-4 shadow-lg backdrop-blur md:flex">
+                <span
+                  aria-hidden="true"
+                  className="grid size-10 shrink-0 place-items-center rounded-xl bg-accent text-primary"
+                >
+                  <Briefcase className="size-5" />
+                </span>
+                <span className="min-w-0 text-sm leading-tight">
+                  <span className="block text-xs text-muted-foreground">Currently</span>
+                  <span className="block font-semibold text-foreground">{current.role}</span>
+                  <span className="block text-muted-foreground">@ {current.organization}</span>
+                </span>
+              </div>
+            ) : null}
           </div>
           {profile.availability ? (
             <p className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-white/80 px-3 py-1 text-sm font-medium text-emerald-800 shadow-sm backdrop-blur md:col-start-1 md:row-start-1 md:mb-6 md:self-end">
@@ -75,7 +96,7 @@ export function Hero() {
               {profile.location}
             </li>
             {current ? (
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2 md:hidden">
                 <Briefcase className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
                 <span>
                   Currently {current.role} at <span className="font-medium text-foreground">{current.organization}</span>
@@ -110,7 +131,6 @@ export function Hero() {
           <ul
             className={`${hasCv ? "mt-3" : "mt-8"} grid grid-cols-2 gap-3 sm:flex sm:flex-wrap`}
             aria-label="Contact and profiles"
-            data-hide-section-nav=""
           >
             <li className="col-span-2">
               <Button asChild size="lg" variant={hasCv ? "outline" : "default"} className="w-full sm:w-auto">
