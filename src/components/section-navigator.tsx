@@ -7,7 +7,7 @@ import { pageSections } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
 /**
- * Floating pill (bottom-right): shows the section you're in and jumps to the next one.
+ * Floating pill (bottom-right): names the next section and jumps to it.
  * On the last section it becomes "Back to top". It hides while a call-to-action button
  * (marked with data-hide-section-nav) passes through the bottom strip of the screen where
  * the pill sits, so it never covers those buttons.
@@ -69,7 +69,6 @@ export function SectionNavigator() {
     };
   }, []);
 
-  const here = pageSections[current];
   const next = pageSections[current + 1];
 
   const go = () => {
@@ -100,14 +99,18 @@ export function SectionNavigator() {
         type="button"
         onClick={go}
         tabIndex={hidden ? -1 : undefined}
-        className="group flex items-center gap-3 rounded-full border border-border bg-white/90 py-1.5 pr-1.5 pl-4 text-sm shadow-lg shadow-slate-900/10 backdrop-blur transition-colors hover:border-primary/40"
+        className="group flex items-center gap-2.5 rounded-full border border-border bg-white/90 py-1.5 pr-1.5 pl-4 text-sm shadow-lg shadow-slate-900/10 backdrop-blur transition-colors hover:border-primary/40"
       >
-        <span className="text-muted-foreground">
-          <span className="sr-only">Current section: </span>
-          {here.label}
+        <span className="font-medium text-foreground">
+          {next ? (
+            <>
+              <span className="sr-only">Go to </span>
+              {next.label}
+            </>
+          ) : (
+            "Back to top"
+          )}
         </span>
-        <span aria-hidden="true" className="h-4 w-px bg-border" />
-        <span className="font-medium text-foreground">{next ? `Next: ${next.label}` : "Back to top"}</span>
         <span
           aria-hidden="true"
           className={cn(
